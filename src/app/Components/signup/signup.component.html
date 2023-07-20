@@ -1,0 +1,58 @@
+<div class="outer">
+    <div class="container">
+      <div class="row">
+        <div class="offset-md-4 col-lg-5 col-md-7 offert-lg-4 offert-md-3">
+          <div class="panel border bg-white">
+            <div class="panel-heading">
+              <h3 class="pt-3 font-weight-bold">Sign Up</h3>
+            </div>
+            <div class="panel-body p-3">
+              <form [formGroup]="signupForm">
+                <div class="form-group pt-3">
+                    <div class="input-field">
+                      <span class="fa fa-user p-1"></span>
+                        <input type="text" placeholder="First Name" formControlName="firstName"/>
+                    </div>
+                  </div>
+                  <small *ngIf="signupForm.get('firstName')?.invalid && signupForm.get('firstName')?.touched" class="text-danger">*First name is required and it should contain alphabets only.</small>
+                  <div class="form-group pt-3">
+                    <div class="input-field">
+                      <span class="fa fa-user p-1"></span>
+                        <input type="text" placeholder="Last Name" formControlName="lastName"/>
+                    </div>
+                  </div>
+                  <small *ngIf="signupForm.get('lastName')?.invalid && signupForm.get('lastName')?.touched" class="text-danger">*First name is required and it should contain alphabets only.</small>
+                  <div class="form-group pt-3">
+                    <div class="input-field">
+                      <span class="fa fa-envelope p-1"></span>
+                        <input type="text" placeholder="Email" formControlName="email"/>
+                    </div>
+                  </div>
+                  <small *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="text-danger">*Email is required.</small>
+                <div class="form-group pt-3">
+                  <div class="input-field">
+                    <span class="fa fa-user p-1"></span>
+                      <input type="text" placeholder="Username" formControlName="username"/>
+                  </div>
+                </div>
+                <small *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched" class="text-danger">*Username is required and it should contain alphabets, numbers and [.,-,_,@]only.</small>
+                <div class="form-group pt-3">
+                  <div class="input-field">
+                    <span class="fa fa-lock p-1"></span>
+                      <input type="text" placeholder="Password" formControlName="password"/>
+                  </div>
+                </div>
+                <small *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="text-danger">*Password is required and it should be in length range of 6 to 10.</small>
+                <div class="form-inline fr mt-4">
+                  <a id="forget" class="font-weight-bold">Forget Password?</a>
+                </div>
+                <button (click)="onSubmit()" [disabled]="signupForm.invalid" type="submit" class="btn btn-primary btn-block mt-4 w-100">Login</button>
+                <div class="text-center pt-4 text-muted">Already have an account? <a id="forget" routerLink="/login">Login</a> </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
