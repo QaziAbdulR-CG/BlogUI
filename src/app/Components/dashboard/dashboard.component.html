@@ -1,47 +1,31 @@
-<nav class="navbar navbar-light bg-light justify-content-between">
-    <a class="navbar-brand">Blog App</a>
-        <div>
-            <span>Hello {{ fullName }}!</span>
-        </div>
-        <div>
-            <button class="btn btn-outline-danger my-2 my-sm-0" (click)="logOut()">Sign Out</button>
-        </div>
-  </nav>
-
-<div class="container">
+<header class="top-header">
+  <div class="container">
+    <nav class="navbar justify-content-between">
+      <a class="navbar-brand" href="/dashboard">Blog Dashboard</a>
+      <a class="navbar-brand" href="/post-blog">Create Blog</a>
+      <div>
+        <span class="me-4">Hello {{ fullName }}!</span>
+        <button class="btn btn-outline-danger my-2 my-sm-0" (click)="logOut()">
+          Sign Out
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+<section class="card-bg">
+  <div class="container pt-5">
     <div class="row">
-      <div class="col">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
+      <div class="col-md-4 my-3" *ngFor="let blog of blogs">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ blog.title }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">{{ blog.summary }}</p>
+            <a [routerLink]="['/read-blog', blog.id]">Read More</a><br />
+            <a [routerLink]="['/view', blog.id]">Edit Blog</a>
           </div>
-      </div>
-      <div class="col">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-      </div>
-      <div class="col">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
+        </div>
       </div>
     </div>
   </div>
+</section>

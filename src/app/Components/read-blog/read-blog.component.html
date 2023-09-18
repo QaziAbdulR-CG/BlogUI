@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card cardMarging">
+            
+          <div class="card-body ">
+            <h5 class="card-title d-flex justify-content-between">{{ blogObject.title }}
+                <div>
+                    <a [routerLink]="['/view', blogObject.id]">Edit Blog</a>
+                    </div>
+            </h5>
+            <p class="card-text">{{ blogObject.summary }}</p>
+            <p class="card-text">{{ blogObject.content }}</p>
+            <p class="card-text"><strong>Created By : </strong><i>{{ blogObject.author }}</i></p>
+            
+            <div class="border border-secondary rounded border-style">
+              <form [formGroup]="commentForm">
+                <div >
+                    <textarea type="text" placeholder="Add Your Comment Here!" formControlName="comment" cols="165"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="commentForm.invalid" (click)="commentSubmit()">Comment</button>
+               </form>
+            </div>
+            <span>Comments</span>
+            <div class="border border-secondary rounded border-style comment-block">
+              <div *ngFor="let comment of displaycommentObject" class="border border-secondary rounded border-style">
+                <li class="list-item">{{comment.comment}}</li>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

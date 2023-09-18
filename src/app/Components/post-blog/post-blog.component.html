@@ -1,0 +1,47 @@
+<div class="outer">
+    <div class="container">
+      <div class="row">
+        <div class="offset-md-4 col-lg-5 col-md-7 offert-lg-4 offert-md-3">
+          <div class="panel border bg-white">
+            <div class="panel-heading">
+              <h3 class="pt-3 font-weight-bold">Create Your Blog</h3>
+            </div>
+            <div class="panel-body p-3">
+              <form [formGroup]="blogPostForm" class="post-blog-form">
+                <div class="form-group pt-3">
+                    <div class="input-field">
+                      <!-- <span class="fa fa-user p-1"></span> -->
+                        <input type="text" placeholder="Title" formControlName="title"/>
+                    </div>
+                  </div>
+                  <small *ngIf="blogPostForm.get('title')?.invalid && blogPostForm.get('title')?.touched" class="text-danger">*Required Field.</small>
+                  <div class="form-group pt-3">
+                    <div class="input-field">
+                        <!-- <input type="text" placeholder="Summary" formControlName="summary"/> -->
+                        <textarea type="text" placeholder="Summary" formControlName="summary" rows="3"></textarea>
+                    </div>
+                  </div>
+                  <small *ngIf="blogPostForm.get('summary')?.invalid && blogPostForm.get('summary')?.touched" class="text-danger">*Required Field.</small>
+                  <div class="form-group pt-3">
+                    <div class="input-field">
+                        <!-- <input type="text" placeholder="Content" formControlName="content"/> -->
+                        <textarea type="text" placeholder="Content" rows="5" formControlName="content"></textarea>
+                    </div>
+                  </div>
+                  <small *ngIf="blogPostForm.get('content')?.invalid && blogPostForm.get('content')?.touched" class="text-danger">*Required Field</small>
+                <div class="form-group pt-3">
+                  <div class="input-field">
+                    <!-- <span class="fa fa-user p-1"></span> -->
+                      <input type="text" placeholder="Image Url" formControlName="imageUrl"/>
+                  </div>
+                </div>
+                <small *ngIf="blogPostForm.get('imageUrl')?.invalid && blogPostForm.get('imageUrl')?.touched" class="text-danger">Required Field</small>
+                <button (click)="onSubmit()" [disabled]="blogPostForm.invalid" type="submit" class="btn btn-primary btn-block mt-4 w-100">Save</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -10,13 +10,21 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { PostBlogComponent } from './Components/post-blog/post-blog.component';
+import { ViewBlogsComponent } from './Components/view-blogs/view-blogs.component';
+import { BlogDetailsComponent } from './Components/blog-details/blog-details.component';
+import { ReadBlogComponent } from './Components/read-blog/read-blog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    DashboardComponent
+    DashboardComponent,
+    PostBlogComponent,
+    ViewBlogsComponent,
+    BlogDetailsComponent,
+    ReadBlogComponent
   ],
   imports: [
     BrowserModule,

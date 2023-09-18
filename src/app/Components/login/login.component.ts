@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/Services/user.service';
+import { NotificationsService } from 'src/app/Services/notifications.service';
 
 // import { NgToastService } from 'ng-angular-popup';
 
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit{
     private auth : AuthService,
     private router : Router,
     private toastr: ToastrService,
-    private userService : UserService
+    private userService : UserService,
+    private notifyService : NotificationsService
     ){}
     // private toast: NgToastService
 
@@ -46,16 +48,18 @@ export class LoginComponent implements OnInit{
         next:(res)=>{
           this.loginForm.reset();
           this.auth.storeToken(res.token);
-          this.toastr.success('Hello world!', 'Toastr fun!');
+          // this.toastr.success('Hello world!', 'Toastr fun!');
           const tokenPaylodad = this.auth.decodeToken();
           this.userService.setFullNameToStorage(tokenPaylodad.name);
-          this.userService.setRoleToStorage(tokenPaylodad.role)
+          this.userService.setRoleToStorage(tokenPaylodad.role);
+          this.notifyService.showSuccess("Login Success !!", "Welcome to Blog App")
           // this.toast.success({detail:"SUCCESS",summary:'Your Success Message',duration:5000});
-          alert(res.message)
+          // alert(res.message)
           this.router.navigate(['dashboard'])
         },
         error:(err)=>{
           alert(err?.error.message)
+          this.notifyService.showError("Login Failed !!", "Try again with correct credentials")
         }
       })
 

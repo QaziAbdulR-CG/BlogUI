@@ -15,12 +15,12 @@ export class AuthService {
       this.userPayload = this.decodeToken();
     }
 
-  signUp(userObj:any){
-    return this.http.post<any>(this.baseUrlString + 'register', userObj);
+  signUp(userObject:any){
+    return this.http.post<any>(this.baseUrlString + 'register', userObject);
   }
 
-  login(loginObj:any){
-    return this.http.post<any>(this.baseUrlString + 'authenticate', loginObj);
+  login(loginObject:any){
+    return this.http.post<any>(this.baseUrlString + 'authenticate', loginObject);
   }
   signOut(){
     localStorage.clear();

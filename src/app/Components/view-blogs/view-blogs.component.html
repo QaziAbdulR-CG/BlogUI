@@ -1,0 +1,22 @@
+<div class="container">
+    <br />
+    <br />
+    <h2>All Blogs</h2>
+    <br />
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let blog of blogs">
+            <td>{{ blog.title }}</td>
+            <td>
+                <a [routerLink]="['/view',blog.id]">View</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>

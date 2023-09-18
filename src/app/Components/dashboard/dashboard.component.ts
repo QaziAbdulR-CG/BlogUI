@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Router } from '@angular/router';
-import { BlogApiService } from 'src/app/Services/blog-api.service';
 import { UserService } from 'src/app/Services/user.service';
+import { BlogService } from 'src/app/Services/blog.service';
+import { blog } from 'src/app/Models/blog';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,11 +13,10 @@ import { UserService } from 'src/app/Services/user.service';
 export class DashboardComponent implements OnInit{
   constructor(private auth: AuthService,
     private router : Router,
-    private blogApiService : BlogApiService,
-    private userService : UserService){
+    private userService : UserService,
+    private blogService : BlogService){
   }
-
-  public users: any = [];
+  public blogs: blog[] = [];
   public fullName : string = "";
   ngOnInit() {
     this.userService.getFullNameFromStorage().
@@ -24,6 +24,14 @@ export class DashboardComponent implements OnInit{
         let getFullNameFromToken = this.auth.getFullNameFromToken();
         this.fullName = val || getFullNameFromToken;
       });
+
+      this.blogService.getAllBlogs()
+      .subscribe(
+        response => {
+          this.blogs = response;
+          console.log(response);
+        }
+      )
   }
 
   logOut(){
