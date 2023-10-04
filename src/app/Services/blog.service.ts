@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class BlogService {
   public baseUrlString = 'https://localhost:7254/api/controller/';
+  // public baseUrlString = 'https://blogapi20230920131656.azurewebsites.net/api/controller/';
+
 
   constructor(private http: HttpClient, private route: Router) {}
 

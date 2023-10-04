@@ -7,6 +7,7 @@ import { commentModel } from 'src/app/Models/commentModel';
 import { UserService } from 'src/app/Services/user.service';
 import { AuthService } from 'src/app/Services/auth.service';
 import { CommentService } from 'src/app/Services/comment.service';
+import { NotificationsService } from 'src/app/Services/notifications.service';
 
 @Component({
   selector: 'app-read-blog',
@@ -37,7 +38,8 @@ export class ReadBlogComponent implements OnInit {
     private userService: UserService,
     private auth: AuthService,
     private commentService: CommentService,
-    private router: Router
+    private router: Router,
+    private notifyService : NotificationsService
   ) {}
 
   ngOnInit(): void {
@@ -69,23 +71,19 @@ export class ReadBlogComponent implements OnInit {
     this.commentObject.comment = this.commentForm.controls['comment'].value;
     this.commentObject.userName = this.fullName;
     console.log(this.commentObject);
-    this.commentService.commentPost(this.commentObject).
-      subscribe({
-        next:()=>{
-          this.commentForm.reset();
-          window.location.reload()
-          // this.router.navigateByUrl(`/read-blog/${this.currentPageId}`);
-        },
-        error:(err)=>{
-          alert(err?.error.message)
-        }
-      })
-    // this.commentService
-    //   .commentPost(this.commentObject)
-    //   .subscribe((response) => {
-    //     this.commentForm.reset();
-    //     this.currentPageId = response;
-    //     this.router.navigateByUrl(`/read-blog/${this.currentPageId}`);
-    //   });
+    this.commentService.commentPost(this.commentObject).subscribe({
+      next: () => {
+        this.commentForm.reset();
+        this.notifyService.showSuccess("Comment Added", "Success!");
+        // this.router.navigateByUrl(`/read-blog/${this.currentPageId}`);
+        window.location.reload()
+      },
+      error: (err) => {
+        alert(err?.error.message);
+      },
+    });
+    // setTimeout(() => {
+    //   this.router.navigateByUrl(`/read-blog/${this.currentPageId}`);
+    // }, 2000);
   }
 }

@@ -1,116 +1,119 @@
-<div class="outer">
-  <div class="container">
-    <div class="row">
-      <div class="offset-md-4 col-lg-5 col-md-7 offert-lg-4 offert-md-3">
-        <div class="panel border bg-white">
-          <div class="panel-heading">
-            <h3 class="pt-3 font-weight-bold">Edit Your Blog</h3>
-          </div>
-          <div class="panel-body p-3">
-            <form [formGroup]="blogUpdateForm" class="post-blog-form">
-              <div class="form-group pt-3">
-                <div class="input-field">
-                  <!-- <span class="fa fa-user p-1"></span> -->
-                  <input
-                    type="text"
-                    placeholder="Title"
-                    formControlName="title"
-                    value="{{ blogObject.title }}"
-                    [(ngModel)]="blogObject.title"
-                  />
+<app-navbar></app-navbar>
+<section class="card-bg">
+  <div class="outer">
+    <div class="container">
+      <div class="row">
+        <div class="offset-md-4 col-lg-5 col-md-7 offert-lg-4 offert-md-3">
+          <div class="panel border bg-white">
+            <div class="panel-heading">
+              <h3 class="pt-3 font-weight-bold">Edit Your Blog</h3>
+            </div>
+            <div class="panel-body p-3">
+              <form [formGroup]="blogUpdateForm" class="post-blog-form">
+                <div class="form-group pt-3">
+                  <div class="input-field">
+                    <!-- <span class="fa fa-user p-1"></span> -->
+                    <input
+                      type="text"
+                      placeholder="Title"
+                      formControlName="title"
+                      value="{{ blogObject.title }}"
+                      [(ngModel)]="blogObject.title"
+                    />
+                  </div>
                 </div>
-              </div>
-              <small
-                *ngIf="
-                  blogUpdateForm.get('title')?.invalid &&
-                  blogUpdateForm.get('title')?.touched
-                "
-                class="text-danger"
-                >*Required Field.</small
-              >
-              <div class="form-group pt-3">
-                <div class="input-field">
-                  <!-- <input type="text" placeholder="Summary" formControlName="summary"/> -->
-                  <textarea
-                    type="text"
-                    placeholder="Summary"
-                    formControlName="summary"
-                    rows="3"
-                    value="{{ blogObject.summary }}"
-                    [(ngModel)]="blogObject.summary"
-                  ></textarea>
-                </div>
-              </div>
-              <small
-                *ngIf="
-                  blogUpdateForm.get('summary')?.invalid &&
-                  blogUpdateForm.get('summary')?.touched
-                "
-                class="text-danger"
-                >*Required Field.</small
-              >
-              <div class="form-group pt-3">
-                <div class="input-field">
-                  <!-- <input type="text" placeholder="Content" formControlName="content"/> -->
-                  <textarea
-                    type="text"
-                    placeholder="Content"
-                    rows="5"
-                    formControlName="content"
-                    value="{{ blogObject.content }}"
-                    [(ngModel)]="blogObject.content"
-                  ></textarea>
-                </div>
-              </div>
-              <small
-                *ngIf="
-                  blogUpdateForm.get('content')?.invalid &&
-                  blogUpdateForm.get('content')?.touched
-                "
-                class="text-danger"
-                >*Required Field</small
-              >
-              <div class="form-group pt-3">
-                <div class="input-field">
-                  <!-- <span class="fa fa-user p-1"></span> -->
-                  <input
-                    type="text"
-                    placeholder="Image Url"
-                    formControlName="imageUrl"
-                    value="{{ blogObject.imageUrl }}"
-                    [(ngModel)]="blogObject.imageUrl"
-                  />
-                </div>
-              </div>
-              <small
-                *ngIf="
-                  blogUpdateForm.get('imageUrl')?.invalid &&
-                  blogUpdateForm.get('imageUrl')?.touched
-                "
-                class="text-danger"
-                >Required Field</small
-              >
-              <div class="d-flex align-items-center justify-content-center">
-                <button
-                  type="submit"
-                  [disabled]="blogUpdateForm.invalid"
-                  (click)="onSubmit()"
-                  class="btn btn-primary btn-block mt-4 w-25 me-4"
+                <small
+                  *ngIf="
+                    blogUpdateForm.get('title')?.invalid &&
+                    blogUpdateForm.get('title')?.touched
+                  "
+                  class="text-danger"
+                  >*Required Field.</small
                 >
-                  Update
-                </button>
-                <button
-                  type="submit"
-                  (click)="deletePost()"
-                  class="btn btn-danger btn-block mt-4 w-25"
+                <div class="form-group pt-3">
+                  <div class="input-field">
+                    <!-- <input type="text" placeholder="Summary" formControlName="summary"/> -->
+                    <textarea
+                      type="text"
+                      placeholder="Summary"
+                      formControlName="summary"
+                      rows="3"
+                      value="{{ blogObject.summary }}"
+                      [(ngModel)]="blogObject.summary"
+                    ></textarea>
+                  </div>
+                </div>
+                <small
+                  *ngIf="
+                    blogUpdateForm.get('summary')?.invalid &&
+                    blogUpdateForm.get('summary')?.touched
+                  "
+                  class="text-danger"
+                  >*Required Field.</small
                 >
-                  Delete
-                </button>
-              </div>
-            </form>
+                <div class="form-group pt-3">
+                  <div class="input-field">
+                    <!-- <input type="text" placeholder="Content" formControlName="content"/> -->
+                    <textarea
+                      type="text"
+                      placeholder="Content"
+                      rows="5"
+                      formControlName="content"
+                      value="{{ blogObject.content }}"
+                      [(ngModel)]="blogObject.content"
+                    ></textarea>
+                  </div>
+                </div>
+                <small
+                  *ngIf="
+                    blogUpdateForm.get('content')?.invalid &&
+                    blogUpdateForm.get('content')?.touched
+                  "
+                  class="text-danger"
+                  >*Required Field</small
+                >
+                <div class="form-group pt-3">
+                  <div class="input-field">
+                    <!-- <span class="fa fa-user p-1"></span> -->
+                    <input
+                      type="text"
+                      placeholder="Image Url"
+                      formControlName="imageUrl"
+                      value="{{ blogObject.imageUrl }}"
+                      [(ngModel)]="blogObject.imageUrl"
+                    />
+                  </div>
+                </div>
+                <small
+                  *ngIf="
+                    blogUpdateForm.get('imageUrl')?.invalid &&
+                    blogUpdateForm.get('imageUrl')?.touched
+                  "
+                  class="text-danger"
+                  >Required Field</small
+                >
+                <div class="d-flex align-items-center justify-content-center">
+                  <button
+                    type="submit"
+                    [disabled]="blogUpdateForm.invalid"
+                    (click)="onSubmit()"
+                    class="btn btn-primary btn-block mt-4 w-25 me-4"
+                  >
+                    Update
+                  </button>
+                  <button
+                    type="submit"
+                    (click)="deletePost()"
+                    class="btn btn-danger btn-block mt-4 w-25"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>

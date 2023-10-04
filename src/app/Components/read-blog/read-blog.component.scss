@@ -1,10 +1,23 @@
-.cardMarging{
-    margin-top: 100px;
+.cardMarging {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
-.border-style{
-    padding: 5px;
-    margin-bottom: 10px;
+.border-style {
+  padding: 5px;
+  margin-bottom: 10px;
 }
-li.list-item{
-    list-style-type: none;
+li.list-item {
+  list-style-type: none;
+}
+.anyClass {
+  height: 180px;
+  overflow-y: scroll;
+}
+.card-bg{
+  background: rgb(238, 174, 202);
+    background: radial-gradient(
+      circle,
+      rgba(238, 174, 202, 1) 0%,
+      rgba(148, 187, 233, 1) 100%
+    );  
 }

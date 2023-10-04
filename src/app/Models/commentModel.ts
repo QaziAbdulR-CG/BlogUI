@@ -3,4 +3,5 @@ export class commentModel{
     blogId: number | undefined;
     comment: string | undefined;
     userName: string | undefined;
+    publishDate?: Date | undefined;
 }

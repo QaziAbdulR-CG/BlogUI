@@ -14,6 +14,7 @@ import { PostBlogComponent } from './Components/post-blog/post-blog.component';
 import { ViewBlogsComponent } from './Components/view-blogs/view-blogs.component';
 import { BlogDetailsComponent } from './Components/blog-details/blog-details.component';
 import { ReadBlogComponent } from './Components/read-blog/read-blog.component';
+import { NavbarComponent } from './Components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ReadBlogComponent } from './Components/read-blog/read-blog.component';
     PostBlogComponent,
     ViewBlogsComponent,
     BlogDetailsComponent,
-    ReadBlogComponent
+    ReadBlogComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

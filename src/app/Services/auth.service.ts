@@ -8,6 +8,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
 
   public baseUrlString = "https://localhost:7254/api/controller/";
+  // public baseUrlString = 'https://blogapi20230920131656.azurewebsites.net/api/controller/';
+
   private userPayload : any;
   constructor(private http : HttpClient,
     private route : Router
