@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
 import { SignupComponent } from './Components/signup/signup.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
@@ -15,6 +15,7 @@ import { ViewBlogsComponent } from './Components/view-blogs/view-blogs.component
 import { BlogDetailsComponent } from './Components/blog-details/blog-details.component';
 import { ReadBlogComponent } from './Components/read-blog/read-blog.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
+import { SearchComponent } from './Components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
     ViewBlogsComponent,
     BlogDetailsComponent,
     ReadBlogComponent,
-    NavbarComponent
+    NavbarComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FormsModule,
   ],
   providers: [
     {

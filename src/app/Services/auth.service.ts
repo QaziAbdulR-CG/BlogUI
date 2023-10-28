@@ -47,9 +47,10 @@ export class AuthService {
   getFullNameFromToken(){
     if(this.userPayload)
       return this.userPayload.name;
-  }
+  } 
   getRoleFromToken(){
     if(this.userPayload)
+      console.log("Role",this.userPayload.role);
       return this.userPayload.role;
   }
 }

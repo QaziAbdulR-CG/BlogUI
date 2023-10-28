@@ -1,0 +1,81 @@
+<div style="margin: 50px">
+  <div class="container" style="text-align: center">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1>Search Resources By Skill</h1>
+        
+        <!-- <input type="text" #movieSearchInput class="form-control" placeholder="Type any movie name" /> -->
+        <div class="search-box">
+          <input
+          class="search-input"
+          type="text"
+          placeholder="Search Skill.."
+          #movieSearchInput
+          [(ngModel)]="inputValue"
+          />
+          <button class="search-btn search-bar-btn"><i class="fas fa-search"></i></button>
+          <!-- <button
+            class="search-btn"
+            *ngIf="inputValue"
+            (click)="inputValue = ''"
+          >
+            <i class="fas fa-close"></i>
+          </button> -->
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="isSearching">
+      <div class="col-12 text-center">
+        <h4>Searching ...</h4>
+      </div>
+    </div>
+    <div class="row">
+      <ng-container
+        *ngIf="response.length === 0 ; else elseTemplate"
+      >
+        <div class="col-12 text-center mt-4">
+          <div class="alert alert-danger error-box" role="alert">
+            Not Found!!
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-template #elseTemplate>
+        <div class="col-12" *ngFor="let profile of response;" >
+          <div class="card search-card mt-4">
+            <div class="card-header">
+              <h5 class="card-title">{{ profile.firstName + ' ' + profile.lastName }}</h5>
+            </div>
+            <div class="card-body">
+              <p class="card-text">Profile Strength: {{ profile.strength }}</p>
+              <h6>Skills: </h6>
+              <div class="star-rating" *ngFor="let skill of profile.skills">
+                    <strong><i>{{ skill.name }}: </i></strong>
+                    <i class="fa fa-star star-color" *ngFor="let star of stars(skill.rating)"></i>
+                    <i class="fa fa-star-half star-color" *ngIf="skill.rating % 1 !== 0"></i>
+                  </div>
+              <div class="mt-2">
+              <a class="url-style" target="_blank" href="{{profile.profileLink}}">Visit   </a>
+              <span class="url-icon-style"><i class="fas fa-external-link-alt"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
+<button class="file-upload-button">
+	<input type="file"
+    #fileInput
+    (change)="getFile($event)"
+    />
+  </button>
+
+  <span class="file-info">{{ fileInfo }}</span>
+
+  <br>
+  <!-- <div class="star-rating">
+    <i class="fa fa-star" *ngFor="let star of stars"></i>
+    <i class="fa fa-star-half" *ngIf="rating % 1 !== 0"></i>
+  </div> -->
